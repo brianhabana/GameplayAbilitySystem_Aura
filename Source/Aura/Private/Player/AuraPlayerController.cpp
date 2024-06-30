@@ -4,10 +4,89 @@
 #include "Player/AuraPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Interaction/EnemyInterface.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
 	bReplicates = true;
+}
+
+void AAuraPlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+	CursorTrace();
+}
+
+
+void AAuraPlayerController::CursorTrace()
+{
+	FHitResult CursorHit;
+	GetHitResultUnderCursor(ECC_Visibility,false, CursorHit);
+	if (!CursorHit.bBlockingHit) return;
+
+	LastActor = ThisActor;
+	ThisActor = CursorHit.GetActor();
+
+	/*
+	 *Line trace from cursor. There are several scenarios
+	 * A. LastActor is null && ThisActor is null
+	 *  - Do Nothing
+	 * B. LastActor is Null ** ThisActor is valid
+	 *  - highlight this actor
+	 * C. LastActor is valid && ThisActor is null
+	 *  - Unhighlight last actor
+	 * D. Both actors are valid, but last actor != ThisActor
+	 *  - Unlightlast last actor, and Highlight ThisActor
+	 * E. Both actors are valid, and are the same actor
+	 *	- Do nothing
+	 */
+
+	bool	LastActorValid = false;
+	bool	ThisActorValid = false;
+	
+	if (LastActor == nullptr)
+	{
+		LastActorValid = false;	
+	}
+	else
+	{
+		LastActorValid = true;
+	}
+
+	if(ThisActor == nullptr)
+	{
+		ThisActorValid = false;
+	}
+	else
+	{
+		ThisActorValid = true;
+	}
+
+	if (!LastActorValid && !ThisActorValid)
+	{
+		// do nothing
+	}
+	else if (!LastActorValid && ThisActorValid)
+	{
+		//case b
+		ThisActor->HighlightActor();
+	}
+	else if (LastActorValid && !ThisActorValid)
+	{
+		//case c
+		LastActor->UnHighlightActor();
+	}
+	else if ((LastActorValid && ThisActorValid) && (LastActor!= ThisActor))
+	{
+		//case d
+		LastActor->UnHighlightActor();
+		ThisActor->HighlightActor();
+	}
+	else if((LastActorValid && ThisActorValid) && (LastActor == ThisActor))
+	{
+		//case e
+		// do nothing
+	}
 }
 
 void AAuraPlayerController::BeginPlay()
@@ -53,3 +132,4 @@ void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 		ControllerPawn->AddMovementInput(RightDirection, InputAxisVector.X);
 	}
 }
+
