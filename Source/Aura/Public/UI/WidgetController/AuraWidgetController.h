@@ -2,8 +2,11 @@
 
 #pragma once
 
+
+
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
+#include "AbilitySystem/AuraAttributeSet.h"
 #include "UObject/NoExportTypes.h"
 #include "AuraWidgetController.generated.h"
 
@@ -24,10 +27,17 @@ struct FWidgetControllerParams
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<APlayerState> PlayerState = nullptr;
+<<<<<<< HEAD
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent = nullptr;
 
+=======
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent = nullptr;
+	
+>>>>>>> temp-branch
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UAttributeSet> AttributeSet = nullptr;
 };
@@ -38,8 +48,13 @@ UCLASS()
 class AURA_API UAuraWidgetController : public UObject
 {
 	GENERATED_BODY()
+<<<<<<< HEAD
 public:
 
+=======
+
+public:
+>>>>>>> temp-branch
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);
 	
