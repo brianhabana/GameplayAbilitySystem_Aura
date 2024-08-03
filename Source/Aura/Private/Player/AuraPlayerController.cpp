@@ -99,10 +99,12 @@ void AAuraPlayerController::BeginPlay()
 	if (Subsystem)
 	{
 		Subsystem->AddMappingContext(AuraContext, 0);
+
 	}
 
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Default;
+	
 
 	FInputModeGameAndUI InputModeData;
 	InputModeData.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
