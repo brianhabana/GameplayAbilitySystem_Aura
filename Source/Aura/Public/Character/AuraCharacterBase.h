@@ -7,9 +7,9 @@
 #include "GameFramework/Character.h"
 #include "AuraCharacterBase.generated.h"
 
-class UGameplayEffect;
 class UAbilitySystemComponent;
 class UAttributeSet;
+class UGameplayEffect;
 
 UCLASS(Abstract)
 class AURA_API AAuraCharacterBase : public ACharacter, public IAbilitySystemInterface
