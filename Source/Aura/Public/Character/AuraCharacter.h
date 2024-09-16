@@ -22,6 +22,10 @@ public:
 	virtual void OnRep_PlayerState() override;
 	/** Player Actor Interface */
 
+	/** Combat Interface **/
+	virtual int32 GetPlayerLevel() override;
+	/** End Combat Interface **/
+	
 private:
 	virtual void InitAbilityActorInfo() override;
 };
