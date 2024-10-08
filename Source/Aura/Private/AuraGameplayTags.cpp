@@ -17,8 +17,7 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		);
 		
 	GameplayTags.Attributes_Primary_Intelligence = UGameplayTagsManager::Get().AddNativeGameplayTag(
-		FName("Attributes.Primary.Intell"
-		"igence"),
+		FName("Attributes.Primary.Intelligence"),
 		FString("Increases magical damage")
 		);
 	
