@@ -21,7 +21,7 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FString("Increases magical damage")
 		);
 	
-	GameplayTags.Attributes_Primary_Intelligence = UGameplayTagsManager::Get().AddNativeGameplayTag(
+	GameplayTags.Attributes_Primary_Resilience = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Attributes.Primary.Resilience"),
 		FString("Increases armor and armor penetration")
 		);
