@@ -18,6 +18,8 @@ void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 			BroadcastAttributeInfo(Pair.Key, Pair.Value());
 		}
 	);
+
+		
 	}
 }
 
