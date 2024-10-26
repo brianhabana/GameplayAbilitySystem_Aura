@@ -2,7 +2,6 @@
 
 
 #include "Character/AuraCharacter.h"
-
 #include "AbilitySystemComponent.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -27,6 +26,9 @@ void AAuraCharacter::PossessedBy(AController* NewController)
 	Super::PossessedBy(NewController);
 	// Init Ability Actor info for the Server
 	InitAbilityActorInfo();
+
+
+	
 	AddCharacterAbilities();
 
 }
